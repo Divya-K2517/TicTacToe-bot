@@ -104,6 +104,7 @@ def bot_move():
     global board
     testboard = board.copy()
     m = None
+    
     for x in avail_spots:
         testboard[x] = "X"
         if check_for_wins(testboard) != None:
@@ -111,6 +112,7 @@ def bot_move():
             break
         elif check_for_wins(testboard) == None:
             testboard[x] = "_"
+
     if m == None:
         for x in avail_spots:
             testboard[x] = "O"
