@@ -99,7 +99,6 @@ def check_for_wins(a = board):
         else:
             winner = "BOT"
         return True
-    print()
 
 def bot_move():
     global board
@@ -110,12 +109,16 @@ def bot_move():
         if check_for_wins(testboard) != None:
             m = x
             break
+        elif check_for_wins(testboard) == None:
+            testboard[x] = "_"
     if m == None:
         for x in avail_spots:
             testboard[x] = "O"
             if check_for_wins(testboard) != None:
                 m = x
                 break 
+            elif check_for_wins(testboard) == None:
+                testboard[x] = "_"
 
     if m is not None:
         board[m] = "O"          
@@ -150,6 +153,7 @@ def play(): #master function
             print("There is a tie! No one wins.")
             game_in_play = False
             break
+        print()
 
         bot_move()
 
@@ -161,5 +165,6 @@ def play(): #master function
             print("There is a tie! No one wins.")
             game_in_play = False
             break
+        print()
 
 play()
